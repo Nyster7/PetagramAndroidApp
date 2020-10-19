@@ -7,5 +7,12 @@
         android:icon="@drawable/icons8_hotel_24"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/contacto"
+        android:title="Contacto" />
+
+    <item
+        android:id="@+id/acercaDe"
+        android:title="Acerca de" />
 
 </menu>

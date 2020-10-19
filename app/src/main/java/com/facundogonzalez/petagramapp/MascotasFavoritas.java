@@ -1,11 +1,11 @@
 package com.facundogonzalez.petagramapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -28,8 +28,7 @@ public class MascotasFavoritas extends AppCompatActivity {
 
         iniciarListaMascotas();
         inicializarAdaptador();
-
-        getSupportActionBar().setHomeButtonEnabled(true);
+        setToolBar();
     }
 
     public void inicializarAdaptador(){
@@ -41,10 +40,16 @@ public class MascotasFavoritas extends AppCompatActivity {
 
         mascotas = new ArrayList<Mascota>();
 
-        mascotas.add(new Mascota(R.drawable.diana,"Diana", 12));
-        mascotas.add(new Mascota(R.drawable.luna,"Luna", 20));
-        mascotas.add(new Mascota(R.drawable.yoda,"Yoda", 5));
-        mascotas.add(new Mascota(R.drawable.tucky,"Tucky", 17));
-        mascotas.add(new Mascota(R.drawable.simon,"Simon", 9));
+        mascotas.add(new Mascota(R.drawable.diana,"Diana"));
+        mascotas.add(new Mascota(R.drawable.luna,"Luna"));
+        mascotas.add(new Mascota(R.drawable.yoda,"Yoda"));
+        mascotas.add(new Mascota(R.drawable.tucky,"Tucky"));
+        mascotas.add(new Mascota(R.drawable.simon,"Simon"));
+    }
+    public void setToolBar(){
+        Toolbar appBar = findViewById(R.id.appBar);
+        setSupportActionBar(appBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 }

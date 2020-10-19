@@ -3,8 +3,11 @@ package com.facundogonzalez.petagramapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Build;
@@ -13,31 +16,36 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toolbar;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Mascota> mascotas;
-    private RecyclerView listaMascotas;
+    private Toolbar toolbar;
+    private TabLayout tabLayaout;
+    private ViewPager viewPager;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listaMascotas = (RecyclerView)findViewById(R.id.rvMascotas);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        tabLayaout = (TabLayout) findViewById(R.id.tabLayout);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        setUpViewPager();
+        setToolBar();
 
-        listaMascotas.setLayoutManager(llm);
 
-        iniciarListaMascotas();
-        inicializarAdaptador();
+        if (toolbar != null){
+            setSupportActionBar(toolbar);
+        }
+
 
     }
 
@@ -55,34 +63,52 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, MascotasFavoritas.class);
                 startActivity(intent);
                 return true;
+
+            case R.id.contacto:
+                Intent intentContacto = new Intent(MainActivity.this, Contacto.class);
+                startActivity(intentContacto);
+                return true;
+
+            case R.id.acercaDe:
+                Intent intentAcercaDe = new Intent(MainActivity.this, AcercaDe.class);
+                startActivity(intentAcercaDe);
+                return true;
+
             default:
                 final boolean b = super.onOptionsItemSelected(item);
                 return b;
         }
     }
 
-    public void inicializarAdaptador(){
-        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, this);
-        listaMascotas.setAdapter(adaptador);
-    }
-
-    public void iniciarListaMascotas(){
-
-        mascotas = new ArrayList<Mascota>();
-
-        mascotas.add(new Mascota(R.drawable.diana,"Diana", 12));
-        mascotas.add(new Mascota(R.drawable.luna,"Luna", 20));
-        mascotas.add(new Mascota(R.drawable.yoda,"Yoda", 5));
-        mascotas.add(new Mascota(R.drawable.tucky,"Tucky", 17));
-        mascotas.add(new Mascota(R.drawable.simon,"Simon", 9));
-    }
-
-
     public void incrementValue(View view){
-        TextView tv = findViewById(R.id.tvLikes);
+        TextView tv = findViewById(R.id.textView);
         int i = Integer.parseInt(tv.getText().toString());
         i++;
         tv.setText(i+"");
+
+    }
+
+    private ArrayList<Fragment> agregarFragments(){
+        ArrayList<Fragment> fragments = new ArrayList<>();
+
+        fragments.add(new RecyclerViewFragment());
+        fragments.add(new BlankFragment());
+
+        return fragments;
+    }
+
+    private void setUpViewPager(){
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), agregarFragments()));
+        tabLayaout.setupWithViewPager(viewPager);
+
+    }
+
+    public void setToolBar(){
+        Toolbar appBar = findViewById(R.id.appBar);
+        setSupportActionBar(appBar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        tabLayaout.getTabAt(0).setIcon(R.drawable.icons8_dog_house_64);
+        tabLayaout.getTabAt(1).setIcon(R.drawable.icons8_pug_48);
 
     }
 }

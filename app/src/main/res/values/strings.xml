@@ -3,4 +3,15 @@
     <string name="todo">TODO</string>
     <string name="favorito">Favorito</string>
     <string name="_12">12</string>
+    <string name="title_contacto">Contacto</string>
+    <string name="name_contact">Nombre</string>
+    <string name="email_contact">E-mail</string>
+    <string name="msj_contact">Mensaje</string>
+    <string name="btn_send">Enviar Comentario</string>
+    <string name="title_bio">Acerca de mí</string>
+    <string name="texto_bio">Mi nombre es Faacundo González, soy de Uruguay y actualmente estudio programacion.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="descripcionImgCardView">Imagen Mascota</string>
+    <string name="nombreMascota">Diana</string>
 </resources>

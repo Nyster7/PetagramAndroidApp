@@ -10,12 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MascotasFavoritas"
+        <activity android:name=".AcercaDe"
+            android:parentActivityName=".MainActivity"
+            tools:targetApi="jelly_bean" />
+
+        <activity android:name=".Contacto"
+            android:parentActivityName=".MainActivity"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".MascotasFavoritas"
             android:parentActivityName=".MascotasFavoritas"
             tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
