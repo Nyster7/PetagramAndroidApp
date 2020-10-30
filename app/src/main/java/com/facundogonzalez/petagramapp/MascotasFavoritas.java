@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.facundogonzalez.petagramapp.adapter.MascotaAdaptador;
+import com.facundogonzalez.petagramapp.modelo.Mascota;
+
 import java.util.ArrayList;
 
 public class MascotasFavoritas extends AppCompatActivity {
@@ -40,11 +43,11 @@ public class MascotasFavoritas extends AppCompatActivity {
 
         mascotas = new ArrayList<Mascota>();
 
-        mascotas.add(new Mascota(R.drawable.diana,"Diana"));
-        mascotas.add(new Mascota(R.drawable.luna,"Luna"));
-        mascotas.add(new Mascota(R.drawable.yoda,"Yoda"));
-        mascotas.add(new Mascota(R.drawable.tucky,"Tucky"));
-        mascotas.add(new Mascota(R.drawable.simon,"Simon"));
+        mascotas.add(new Mascota(R.drawable.diana,"Diana",0));
+        mascotas.add(new Mascota(R.drawable.luna,"Luna",0));
+        mascotas.add(new Mascota(R.drawable.yoda,"Yoda",0));
+        mascotas.add(new Mascota(R.drawable.tucky,"Tucky",0));
+        mascotas.add(new Mascota(R.drawable.simon,"Simon",0));
     }
     public void setToolBar(){
         Toolbar appBar = findViewById(R.id.appBar);

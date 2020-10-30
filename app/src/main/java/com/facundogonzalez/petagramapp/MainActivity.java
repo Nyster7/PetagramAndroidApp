@@ -5,8 +5,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -15,9 +13,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
+import com.facundogonzalez.petagramapp.adapter.PageAdapter;
+import com.facundogonzalez.petagramapp.vista.fragment.BlankFragment;
+import com.facundogonzalez.petagramapp.vista.fragment.RecyclerViewFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -80,13 +79,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void incrementValue(View view){
+    /*public void incrementValue(View view){
         TextView tv = findViewById(R.id.textView);
         int i = Integer.parseInt(tv.getText().toString());
         i++;
         tv.setText(i+"");
 
-    }
+    }*/
 
     private ArrayList<Fragment> agregarFragments(){
         ArrayList<Fragment> fragments = new ArrayList<>();
